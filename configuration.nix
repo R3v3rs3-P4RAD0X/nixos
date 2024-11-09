@@ -8,12 +8,12 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./nix-alien.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  
+  boot.loader.efi.canTouchEfiVariables = true;  
 
   # Allow Unfree Software
   nixpkgs.config.allowUnfree = true;
@@ -39,6 +39,9 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager.defaultSession = "plasma";
 
+  # Nix_LD
+  programs.nix-ld.enable = true;
+
   # System Packages
   environment.systemPackages = with pkgs; [
     wget
@@ -46,6 +49,7 @@
     git
   ];
 
+  # Custom Program Options
   programs.steam = {
   	enable = true;
 	remotePlay.openFirewall = true;
