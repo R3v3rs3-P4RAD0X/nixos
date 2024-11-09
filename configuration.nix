@@ -46,11 +46,17 @@
     git
   ];
 
+  programs.steam = {
+  	enable = true;
+	remotePlay.openFirewall = true;
+	dedicatedServer.openFirewall = true;
+	localNetworkGameTransfers.openFirewall = true;
+  };
+
   users.users.p4rad0x = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager"];
     packages = with pkgs; [
-      pkgs.steam
       pkgs.brave
       pkgs.discord
       pkgs.fish
