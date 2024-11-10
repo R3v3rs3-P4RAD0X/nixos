@@ -11,6 +11,7 @@
 				i3
 				i3status
 				i3lock
+				i3-gaps
 				feh
 			];
 		};
