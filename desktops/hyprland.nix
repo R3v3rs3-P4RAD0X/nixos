@@ -1,19 +1,11 @@
 { config, pkgs, ... }:
+
 {
-	services.xserver = {
+	programs.hyprland = {
 		enable = true;
-		displayManager.sddm.enable = true;
-		desktopManager = {
-			xterm.enable = false;
-		};
+		xwayland.enable = true;
 	};
 
-	environment.systemPackages = with pkgs; [
-		hyprland
-			waybar
-			alacritty
-			rofi
-			dunst
-	];
+	security.polkit.enable = true;
 }
 
