@@ -54,6 +54,7 @@
 			glibc
 			binutils
 			libkrb5
+			libz
 		];
 
 	};
