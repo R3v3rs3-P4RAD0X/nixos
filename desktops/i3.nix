@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 	services.xserver = {
@@ -8,6 +8,7 @@
 			enable = true;
 			extraPackages = with pkgs; [
 				rofi
+				i3
 				i3status
 				i3lock
 				feh
@@ -17,4 +18,8 @@
 	};
 
 	hardware.opengl.enable = true;
+
+	services.displayManager.sddm = {
+		enable = true;
+	};
 }
