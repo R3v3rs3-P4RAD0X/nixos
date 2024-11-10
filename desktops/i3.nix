@@ -13,5 +13,8 @@
 				feh
 			];
 		};
+		videoDrivers = [ "nvidia" ];
 	};
+
+	hardware.opengl.enable = true;
 }

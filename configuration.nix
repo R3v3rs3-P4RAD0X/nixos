@@ -51,7 +51,6 @@
 
 	time.timeZone = "Europe/London";
 
-
 	hardware.pulseaudio.enable= true;
 	system.stateVersion = "24.05";
 }
