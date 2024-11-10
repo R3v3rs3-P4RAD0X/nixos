@@ -2,8 +2,10 @@
 {
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
   };
 
   services.desktopManager.plasma6 = {
@@ -16,4 +18,7 @@
     pkgs.google-fonts
     pkgs.nerdfonts
   ];
+
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+
 }
