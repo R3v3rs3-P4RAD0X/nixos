@@ -37,6 +37,7 @@
 		libraries = with pkgs; [
 			glib
 			mesa
+			libglvnd
 		];
 
 	};

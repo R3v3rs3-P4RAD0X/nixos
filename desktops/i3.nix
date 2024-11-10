@@ -3,7 +3,7 @@
 {
 	services.xserver = {
 		enable = true;
-		layout = "gb";
+		xkb.layout = "gb";
 		windowManager.i3 = {
 			enable = true;
 			extraPackages = with pkgs; [
