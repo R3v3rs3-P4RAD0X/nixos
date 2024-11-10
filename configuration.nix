@@ -3,7 +3,6 @@
 	imports =
 		[
 			./hardware-configuration.nix
-			./nix-alien.nix
 			./desktops/i3.nix
 		];
 
