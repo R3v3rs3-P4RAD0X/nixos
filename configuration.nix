@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       ./nix-alien.nix
       # ./desktops/hyprland.nix
-      # ./desktops/plasma.nix
+      ./desktops/plasma.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -31,21 +31,12 @@
     package = pkgs.linuxPackages.nvidiaPackages.stable;
   };
 
-  # services.displayManager.sddm.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-  # services.displayManager.defaultSession = "plasma";
+  #services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
+  #services.desktopManager.plasma6.enable = true;
+  #services.displayManager.defaultSession = "plasma";
 
-  services.xserver = {
-	enable = true;
-	displayManager.gdm = {
-		enable = true;
-		wayland = false;
-	};
-	desktopManager.plasma5.enable = true;
-  };
-
-  # Nix_LD
+   # Nix_LD
   programs.nix-ld.enable = true;
 
   # System Packages
