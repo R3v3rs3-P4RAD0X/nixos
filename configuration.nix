@@ -1,71 +1,51 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
+{ config, pkgs, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ./nix-alien.nix
-      # ./desktops/hyprland.nix
-      ./desktops/plasma.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;  
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # Allow Unfree Software
   nixpkgs.config.allowUnfree = true;
 
-  # Networking
   networking.networkmanager.enable = true;
-  
-  # Setup NVIDIA
-  hardware.opengl.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    package = pkgs.linuxPackages.nvidiaPackages.stable;
-  };
 
-  #services.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
-  #services.displayManager.defaultSession = "plasma";
-  
-  xdg = {
-    portal = {
-      xdgOpenUsePortal = true;
-      enable = true;
-      extraPortals = with pkgs; [
-        pkgs.xdg-desktop-portal-kde
-	pkgs.xdg-desktop-portal-gtk
-      ];
-    };
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
-  
-  # Nix_LD
+  hardware.nvidia.modesetting.enable = true;
+
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.defaultSession = "plasma";
+
   programs.nix-ld.enable = true;
 
-  # System Packages
   environment.systemPackages = with pkgs; [
     wget
     neovim
     git
-    xdg-desktop-portal-kde
-    xdg-desktop-portal-gtk
+    mangohud
   ];
 
-  # Custom Program Options
   programs.steam = {
-  	enable = true;
-	remotePlay.openFirewall = true;
-	dedicatedServer.openFirewall = true;
-	localNetworkGameTransfers.openFirewall = true;
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession = {
+      enable = true;
+    };
   };
+
+  programs.gamemode.enable = true;
 
   users.users.p4rad0x = {
     isNormalUser = true;
@@ -73,53 +53,30 @@
     packages = with pkgs; [
       pkgs.brave
       pkgs.discord
+      pkgs.vesktop
       pkgs.fish
       pkgs.spotify
       pkgs.kitty
       vscode
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
     ];
   };
 
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = false;
-  
-  # Set your time zone.
+
   time.timeZone = "Europe/Amsterdam";
 
-  # Configure keymap in X11
   services.xserver.xkb.layout = "gb";
   services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
   hardware.pulseaudio.enable = false;
-  # OR
   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
+    enable = true;
+    pulse.enable = true;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 }
 
