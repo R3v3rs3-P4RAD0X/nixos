@@ -38,6 +38,7 @@
 			glib
 			mesa
 			libglvnd
+			libxkbcommon
 		];
 
 	};
