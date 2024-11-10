@@ -35,8 +35,17 @@
   #services.displayManager.sddm.wayland.enable = true;
   #services.desktopManager.plasma6.enable = true;
   #services.displayManager.defaultSession = "plasma";
-
-   # Nix_LD
+  
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+      ];
+    };
+  };
+  
+  # Nix_LD
   programs.nix-ld.enable = true;
 
   # System Packages
