@@ -41,6 +41,7 @@
 			libxkbcommon
 			fontconfig
 			xorg.libX11
+			freetype
 		];
 
 	};
