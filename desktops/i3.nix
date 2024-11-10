@@ -15,6 +15,7 @@
 				feh
 				variety
 				pkgs.gnome.nautilus
+				polybar
 			];
 		};
 		videoDrivers = [ "nvidia" ];
