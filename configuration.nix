@@ -1,82 +1,58 @@
 { config, pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./nix-alien.nix
-    ];
+	imports =
+		[
+		./hardware-configuration.nix
+			./nix-alien.nix
+			./desktops/i3.nix
+		];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+	boot.loader.systemd-boot.enable = true;
+	boot.loader.efi.canTouchEfiVariables = true;
 
-  nixpkgs.config.allowUnfree = true;
+	nixpkgs.config.allowUnfree = true;
+	networking.networkmanager.enable = true;
 
-  networking.networkmanager.enable = true;
+	environment.systemPackages = with pkgs; [
+		wget
+		neovim
+		git
+		mangohud
+	];
 
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-  hardware.nvidia.modesetting.enable = true;
+	programs.steam = {
+		enable = true;
+		remotePlay.openFirewall = true;
+		dedicatedServer.openFirewall = true;
+		localNetworkGameTransfers.openFirewall = true;
+		gamescopeSession = {
+			enable = true;
+		};
+	};
 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.defaultSession = "plasma";
+	programs.gamemode.enable = true;
 
-  programs.nix-ld.enable = true;
+	users.users.p4rad0x = {
+		isNormalUser = true;
+		extraGroups = ["wheel" "networkmanager"];
+		packages = with pkgs; [
+			pkgs.brave
+			pkgs.discord
+			pkgs.vesktop
+			pkgs.fish
+			pkgs.spotify
+			pkgs.kitty
+			vscode
+		];
+	};
 
-  environment.systemPackages = with pkgs; [
-    wget
-    neovim
-    git
-    mangohud
-  ];
+	security.sudo.enable = true;
+	security.sudo.wheelNeedsPassword = false;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession = {
-      enable = true;
-    };
-  };
+	time.timeZone = "Europe/London";
 
-  programs.gamemode.enable = true;
 
-  users.users.p4rad0x = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"];
-    packages = with pkgs; [
-      pkgs.brave
-      pkgs.discord
-      pkgs.vesktop
-      pkgs.fish
-      pkgs.spotify
-      pkgs.kitty
-      vscode
-      xdg-desktop-portal-kde
-      xdg-desktop-portal-gtk
-    ];
-  };
-
-  security.sudo.enable = true;
-  security.sudo.wheelNeedsPassword = false;
-
-  time.timeZone = "Europe/Amsterdam";
-
-  services.xserver.xkb.layout = "gb";
-  services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  system.stateVersion = "24.05";
+	hardware.pulseaudio.enable= true;
+	system.stateVersion = "24.05";
 }
 
