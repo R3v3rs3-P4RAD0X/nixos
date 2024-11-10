@@ -42,6 +42,7 @@
 			pkgs.fish
 			pkgs.spotify
 			pkgs.kitty
+			variety
 			vscode
 		];
 	};
