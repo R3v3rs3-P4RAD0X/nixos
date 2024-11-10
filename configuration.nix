@@ -20,8 +20,9 @@
 		mangohud
 		nix-ld
 		patchelf
-	];
-
+		glibc
+		binutils
+	];	
 
 	programs.steam = {
 		enable = true;
