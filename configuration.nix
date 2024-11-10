@@ -45,6 +45,7 @@
 			freetype
 			dbus
 			nss
+			zlib
 		];
 
 	};
