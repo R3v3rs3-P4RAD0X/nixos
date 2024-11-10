@@ -22,6 +22,8 @@
 		patchelf
 		glibc
 		binutils
+		zlib
+		libkrb5
 	];	
 
 	programs.steam = {

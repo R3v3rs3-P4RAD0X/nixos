@@ -7,6 +7,8 @@ sudo nixos-rebuild switch
 if [ $? -eq 0 ]; then
     echo "Rebuild successful. Pushing changes to Git repository."
 
+    ssh-add ~/.ssh/github
+
     # Add all changes to Git
     git add /etc/nixos/*
 
