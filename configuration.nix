@@ -39,6 +39,7 @@
 			mesa
 			libglvnd
 			libxkbcommon
+			fontconfig
 		];
 
 	};
