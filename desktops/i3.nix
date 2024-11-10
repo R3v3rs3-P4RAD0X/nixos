@@ -13,6 +13,8 @@
 				i3lock
 				i3-gaps
 				feh
+				variety
+				pkgs.gnome.nautilus
 			];
 		};
 		videoDrivers = [ "nvidia" ];
