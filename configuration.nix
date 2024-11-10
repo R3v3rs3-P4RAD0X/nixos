@@ -18,6 +18,7 @@
 		neovim
 		git
 		mangohud
+		glib
 	];
 
 	programs.steam = {
