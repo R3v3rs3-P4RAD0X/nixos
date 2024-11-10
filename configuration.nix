@@ -19,7 +19,9 @@
 		git
 		mangohud
 		nix-ld
+		patchelf
 	];
+
 
 	programs.steam = {
 		enable = true;
