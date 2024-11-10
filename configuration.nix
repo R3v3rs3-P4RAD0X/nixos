@@ -17,6 +17,7 @@
 		neovim
 		git
 		mangohud
+		nix-ld
 	];
 
 	programs.steam = {
@@ -35,7 +36,9 @@
 		enable = true;
 		libraries = with pkgs; [
 			glib
+			mesa
 		];
+
 	};
 
 	users.users.p4rad0x = {
