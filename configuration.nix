@@ -2,7 +2,7 @@
 {
 	imports =
 		[
-		./hardware-configuration.nix
+			./hardware-configuration.nix
 			./nix-alien.nix
 			./desktops/i3.nix
 		];
@@ -43,6 +43,7 @@
 			pkgs.spotify
 			pkgs.kitty
 			variety
+			feh
 			vscode
 		];
 	};
@@ -52,7 +53,7 @@
 
 	time.timeZone = "Europe/London";
 
-	hardware.pulseaudio.enable= true;
+	hardware.pulseaudio.enable = true;
 	system.stateVersion = "24.05";
 }
 
