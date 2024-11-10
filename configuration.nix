@@ -51,6 +51,9 @@
 			dbus
 			nss
 			zlib
+			glibc
+			binutils
+			libkrb5
 		];
 
 	};
