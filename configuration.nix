@@ -38,9 +38,11 @@
   
   xdg = {
     portal = {
+      xdgOpenUsePortal = true;
       enable = true;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
+        pkgs.xdg-desktop-portal-kde
+	pkgs.xdg-desktop-portal-gtk
       ];
     };
   };
@@ -53,6 +55,8 @@
     wget
     neovim
     git
+    xdg-desktop-portal-kde
+    xdg-desktop-portal-gtk
   ];
 
   # Custom Program Options
