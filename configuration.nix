@@ -40,6 +40,7 @@
 			libglvnd
 			libxkbcommon
 			fontconfig
+			xorg.libX11
 		];
 
 	};
