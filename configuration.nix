@@ -3,8 +3,9 @@
 	imports =
 		[
 			./hardware-configuration.nix
-			./desktops/i3.nix
+			# ./desktops/i3.nix
 			./nix-alien.nix
+			./desktops/hyprland.nix
 		];
 
 	boot.loader.systemd-boot.enable = true;
