@@ -4,6 +4,7 @@
 		[
 			./hardware-configuration.nix
 			./desktops/i3.nix
+			./nix-alien.nix
 		];
 
 	boot.loader.systemd-boot.enable = true;
