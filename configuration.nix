@@ -17,7 +17,6 @@
 		neovim
 		git
 		mangohud
-		glib
 	];
 
 	programs.steam = {
@@ -31,6 +30,13 @@
 	};
 
 	programs.gamemode.enable = true;
+
+	programs.nix-ld = {
+		enable = true;
+		libraries = with pkgs; [
+			glib
+		];
+	};
 
 	users.users.p4rad0x = {
 		isNormalUser = true;
