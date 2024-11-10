@@ -42,6 +42,7 @@
 			fontconfig
 			xorg.libX11
 			freetype
+			dbus
 		];
 
 	};
