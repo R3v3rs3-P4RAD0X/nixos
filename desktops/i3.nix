@@ -18,10 +18,7 @@
 				polybar
 			];
 		};
-		videoDrivers = [ "nvidia" ];
 	};
-
-	hardware.opengl.enable = true;
 
 	services.displayManager.sddm = {
 		enable = true;

@@ -26,7 +26,10 @@
 		zlib
 		libkrb5
 	];	
-
+	
+	services.xserver.videoDrivers = [ "nvidia" ];
+	hardware.opengl.enable = true;
+	
 	programs.steam = {
 		enable = true;
 		remotePlay.openFirewall = true;

@@ -12,7 +12,6 @@
 		};
 	};
 	services.displayManager.sddm.wayland.enable = true;
-
 	security.polkit.enable = true;
 }
 
