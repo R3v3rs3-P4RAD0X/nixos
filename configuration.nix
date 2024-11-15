@@ -25,6 +25,7 @@
 		binutils
 		zlib
 		libkrb5
+		pkgs.home-manager
 	];	
 	
 	services.xserver.videoDrivers = [ "nvidia" ];
